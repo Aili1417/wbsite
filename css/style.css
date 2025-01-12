@@ -1,0 +1,716 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #ff69b4;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 60px 0;
+    padding-top: 100px;
+    margin-top: 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+    border-radius: 2px;
+}
+
+/* 全局渐变动画 */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.navbar, .hero, footer {
+    background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+}
+
+/* 导航栏样式 */
+.navbar {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(-45deg, #1976d2, #64b5f6, #ff69b4, #1565c0);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: 65px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.visible {
+    top: 0;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3),
+                 0 0 15px rgba(255, 255, 255, 0.6),
+                 0 0 25px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    animation: titleGlow 2s infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        transform: scale(1);
+        letter-spacing: 2px;
+    }
+    50% {
+        transform: scale(1.02);
+        letter-spacing: 3px;
+    }
+}
+
+.logo a:hover {
+    transform: translateY(-2px);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    width: 100%;
+}
+
+.nav-links li a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.nav-links li a.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* 首页部分动画 */
+.hero-content h1 {
+    animation: fadeInUp 1s ease;
+}
+
+.hero-content p {
+    animation: fadeInUp 1s ease 0.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.cta-button {
+    animation: fadeInUp 1s ease 0.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+/* 首页部分 */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 65px;
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    max-width: 800px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.highlight {
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border-color: transparent;
+    color: #fff;
+}
+
+.cta-button:hover::before {
+    opacity: 1;
+}
+
+.cta-button:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 关于我部分 */
+.about {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.interest-item {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.interest-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.interest-item:hover {
+    transform: translateY(-10px);
+}
+
+.interest-item:hover::before {
+    transform: scaleX(1);
+}
+
+.interest-item i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #3498db;
+    transition: all 0.3s ease;
+}
+
+.interest-item:hover i {
+    transform: scale(1.1);
+    color: #2ecc71;
+}
+
+.interest-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.interest-item p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+/* 技能部分 */
+.skills {
+    padding: 60px 0;
+    background: #ffffff;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    color: #2c3e50;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.skill-card i {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skill-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    text-shadow: none;
+}
+
+.skill-card p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-shadow: none;
+}
+
+.skill-level {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-bar {
+    height: 100%;
+    background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+    border-radius: 4px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* 联系部分 */
+.contact {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f6f9fc 0%, #fff1f6 100%);
+}
+
+.contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.contact-item {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.contact-item i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #3498db;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover i {
+    transform: scale(1.1);
+    color: #2ecc71;
+}
+
+.contact-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.contact-item p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+/* 页脚 */
+footer {
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-content {
+        padding: 0 1rem;
+    }
+    
+    .logo a {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    .nav-links li a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-content {
+        padding: 0 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+        white-space: normal;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    
+    .interests-grid,
+    .skills-grid,
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .interest-item,
+    .skill-card,
+    .contact-item {
+        padding: 20px 15px;
+    }
+    
+    .interest-item i,
+    .skill-card i,
+    .contact-item i {
+        font-size: 2.5rem;
+    }
+    
+    .interest-item h3,
+    .skill-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    section {
+        padding: 40px 0;
+        padding-top: 80px;
+    }
+    
+    footer {
+        padding: 1.5rem 0;
+        margin-bottom: 60px;
+    }
+    
+    footer p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .logo a {
+        font-size: 1.1rem;
+    }
+    
+    .nav-links li a {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .interest-item,
+    .skill-card,
+    .contact-item {
+        padding: 15px;
+    }
+    
+    .interest-item i,
+    .skill-card i,
+    .contact-item i {
+        font-size: 2rem;
+    }
+}
+
+/* 卡片图标统一渐变 */
+.interest-item i,
+.skill-card i,
+.contact-item i {
+    background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
+    background-size: 400% 400%;
+    animation: gradientBG 15s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 动画定义 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #4a90e2 0%, #6ba4e5 33%, #ff69b4 66%, #ff8cc6 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #3a80d2 0%, #5a94d5 33%, #ef59a4 66%, #ef7cb6 100%);
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #e1e1e1;
+}
+
+/* 文字选中样式 */
+::selection {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* 添加平滑滚动效果 */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* 优化移动端触摸体验 */
+@media (hover: none) {
+    .interest-item:hover,
+    .skill-card:hover,
+    .contact-item:hover {
+        transform: none;
+    }
+    
+    .nav-links li a:hover {
+        background: none;
+    }
+} 
