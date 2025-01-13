@@ -100,4 +100,47 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
     });
+
+    // 联系方式点击复制功能
+    document.querySelectorAll('.contact-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const text = this.querySelector('p').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                // 创建提示元素
+                const tooltip = document.createElement('div');
+                tooltip.textContent = '已复制!';
+                tooltip.style.cssText = `
+                    position: fixed;
+                    background: rgba(74, 144, 226, 0.9);
+                    color: white;
+                    padding: 8px 16px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    pointer-events: none;
+                    z-index: 1000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                `;
+                
+                // 计算位置
+                const rect = this.getBoundingClientRect();
+                tooltip.style.left = rect.left + (rect.width - tooltip.offsetWidth) / 2 + 'px';
+                tooltip.style.top = rect.top - 40 + 'px';
+                
+                // 添加到页面
+                document.body.appendChild(tooltip);
+                
+                // 显示动画
+                requestAnimationFrame(() => {
+                    tooltip.style.opacity = '1';
+                });
+                
+                // 3秒后移除
+                setTimeout(() => {
+                    tooltip.style.opacity = '0';
+                    setTimeout(() => tooltip.remove(), 300);
+                }, 2000);
+            });
+        });
+    });
 });
