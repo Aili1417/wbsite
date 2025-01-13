@@ -85,7 +85,7 @@ section {
     z-index: 1000;
     height: 65px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
 }
 
 .navbar.visible {
@@ -518,30 +518,42 @@ footer p {
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+    }
+
     .nav-content {
         padding: 0 1rem;
     }
-    
+
     .logo a {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+        padding: 0.3rem 0.5rem;
+        animation: none;
+        letter-spacing: normal;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
-    
+
+    .logo a:hover {
+        transform: none;
+        letter-spacing: normal;
+    }
+
     .nav-links {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(-45deg, #4a90e2, #6ba4e5, #ff69b4, #ff8cc6);
-        padding: 10px;
         display: flex;
-        justify-content: space-around;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        justify-content: flex-end;
+        gap: 5px;
+        padding: 0;
     }
     
     .nav-links li a {
-        padding: 8px 12px;
-        font-size: 0.9rem;
+        padding: 6px 8px;
+        font-size: 0.85rem;
+        white-space: nowrap;
     }
     
     .hero-content {
@@ -605,7 +617,6 @@ footer p {
     
     footer {
         padding: 1.5rem 0;
-        margin-bottom: 60px;
     }
     
     footer p {
@@ -619,11 +630,13 @@ footer p {
     }
     
     .logo a {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
+        max-width: 120px;
+        letter-spacing: 1px;
     }
     
     .nav-links li a {
-        padding: 6px 10px;
+        padding: 5px 6px;
         font-size: 0.8rem;
     }
     
@@ -641,6 +654,18 @@ footer p {
     .skill-card i,
     .contact-item i {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo a {
+        font-size: 0.85rem;
+        max-width: 100px;
+    }
+    
+    .nav-links li a {
+        padding: 4px 5px;
+        font-size: 0.75rem;
     }
 }
 

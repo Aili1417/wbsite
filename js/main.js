@@ -2,10 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 导航栏滑动效果
     const navbar = document.querySelector('.navbar');
     
-    // 页面加载时的导航栏动画
-    setTimeout(() => {
-        navbar.style.top = '0';
-    }, 500);
+    // 页面加载时立即显示导航栏
+    navbar.style.top = '0';
 
     // 导航栏滚动效果
     window.addEventListener('scroll', function() {
