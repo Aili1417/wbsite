@@ -1005,4 +1005,18 @@ html {
 
 .project-card:first-child .project-overlay a:hover i {
     transform: rotate(360deg);
+}
+
+/* 添加项目链接样式 */
+.projects-grid a {
+    text-decoration: none;  /* 移除下划线 */
+    color: inherit;         /* 继承原有文字颜色 */
+    display: block;         /* 让链接占满整个卡片区域 */
+    cursor: pointer;        /* 显示手型光标 */
+}
+
+/* 确保卡片悬停效果仍然生效 */
+.projects-grid a:hover .project-card {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 } 
