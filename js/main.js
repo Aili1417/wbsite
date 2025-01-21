@@ -143,4 +143,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    // 项目卡片悬停效果
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const overlay = this.querySelector('.project-overlay');
+            overlay.style.opacity = '1';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            const overlay = this.querySelector('.project-overlay');
+            overlay.style.opacity = '0';
+        });
+
+        // 链接点击效果
+        card.querySelectorAll('.project-overlay a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    });
+
+    // 添加项目卡片到观察者
+    document.querySelectorAll('.project-card').forEach(card => {
+        observer.observe(card);
+    });
 });
